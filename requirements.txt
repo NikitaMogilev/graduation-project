@@ -1,0 +1,11 @@
+pytest
+selenium
+retrying
+pytest-rerunfailures==11.1.1
+pytest-xdist==3.2.0
+allure-pytest==2.12.0
+webdriver-manager==3.8.5
+selenium-stealth
+
+
+#Google Chrome==Version 110.0.5481.100
