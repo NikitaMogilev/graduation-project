@@ -1,27 +1,12 @@
-# from retrying import retry
 from selenium import webdriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from retrying import retry
 from selenium.webdriver.support.select import Select
-import random
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 from data.data import DataUser
-
-
-# def random_name_address(self):
-#     validchars = 'abcdefghijklmnopqrstuvwxyz1234567890'
-#     add_char = ''
-#     adress_name = 'my address'
-#     loginlen = random.randint(1, 3)
-#     for i in range(loginlen):
-#         pos = random.randint(0, len(validchars) - 1)
-#         add_char += validchars[pos]
-#     addres = adress_name + add_char
-#     return addres
-
+import allure
 
 class BasePage:
     def __init__(self, browser: webdriver.Chrome) -> object:
@@ -45,13 +30,12 @@ class BasePage:
     def check_title(self):
         return self.webdriver.title
 
-    # def get_url(self):
-    #     return self.webdriver.current_url
 
     def get_atr(self, locator: tuple, atr: str, timer=15):
         element = WebDriverWait(self.webdriver, timer).until(EC.presence_of_element_located(locator))
         return element.get_attribute(atr)
 
+    @allure.step('Get list of value from find elements by chosen attributes')
     def get_list_atr(self, locator_of_list_el: tuple, atr: str, timer=15):
         list_of_atrs = self.find_elements(locator_of_list_el)
         el_atr_text = []
@@ -91,9 +75,6 @@ class BasePage:
         hover.perform()
         return WebDriverWait(self.webdriver, 40).until(EC.visibility_of_element_located(locator2)).click()
 
-    # def submit_element(self, locator: tuple, timer=10):
-    #     return WebDriverWait(self.webdriver, timer).until(EC.element_to_be_clickable(locator)).submit()
-
     def send_keys(self, locator, content, timer=10):
         input_field = WebDriverWait(self.webdriver, timer).until(EC.element_to_be_clickable(locator))
         input_field.clear()
@@ -115,13 +96,6 @@ class BasePage:
             el_textes.append(text_el)
         return el_textes
 
-    # def get_list_atr(self, locator_of_list_el: tuple, atr: str, timer=15):
-    #     list_of_atrs = self.find_elements(locator_of_list_el)
-    #     el_atr_text = []
-    #     for el in list_of_atrs:
-    #         text_class = el.get_attribute(atr)
-    #         el_atr_text.append(text_class)
-    #     return el_atr_text
 
     def switch_to_iframe(self, locator: object, timer=40):
         iframe = self.webdriver.find_element(locator)
@@ -131,24 +105,3 @@ class BasePage:
     def switch_to_default_context(self):
         self.webdriver.switch_to.default_content()
 
-    # def accept_alert(self):
-    #     alert_el = self.webdriver.switch_to.alert
-    #     alert_el.accept()
-    #     self.switch_to_default_context()
-    #
-    # def dismiss_alert(self):
-    #     alert_el = self.webdriver.switch_to.alert
-    #     alert_el.dismiss()
-    #     self.switch_to_default_context()
-    #
-    # def fill_and_accept_alert(self, content):
-    #     alert_el = self.webdriver.switch_to.alert
-    #     alert_el.send_keys(content)
-    #     alert_el.accept()
-    #     self.switch_to_default_context()
-    #
-    # @retry(stop_max_delay=10000)
-    # def element_click_with_retry(self, locator, timer=30):
-    #     return (
-    #         WebDriverWait(self.webdriver, timer).until(
-    #             EC.element_to_be_clickable(locator), message=f"Can't find element by locator {locator}"))

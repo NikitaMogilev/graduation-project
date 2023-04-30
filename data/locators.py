@@ -11,7 +11,7 @@ class RegPageLocators:
                                    '//div[@class="fancy-form-message__text js-fancy-form-text"]')
     pseudo_field = (By.XPATH, '//input[@name="username"]')
     password_field = (By.XPATH, '//input[@id="password"]')
-    conditions_checkbox_expat = (By.XPATH, '//span[@class="fancy-form__checkbox"]')
+    conditions_checkbox_expat = (By.CSS_SELECTOR, '.checkbox-label')
     error_without_checkbox = (By.XPATH, '//div[@class="error-list"]//li[contains(text(), "You must")]')
     pseudo_submit_but = (By.XPATH, '//button[@id="submitStep2"]')
 
@@ -21,6 +21,9 @@ class RegPageLocators:
     info_del_message = (By.XPATH, '//p[@class="status"]/span')
 
     interested_destination_field = (By.XPATH, '//input[@name="destination_of_interest"]')
+    click_interest = (By.XPATH, '//li[text()="Vietnam"]')
+    cookie_button = (By.CSS_SELECTOR, 'axeptio_btn_acceptAll')
+
     expat_selector = (By.XPATH, '//span[@id="select2-expat-status-container"]')
     expat_status = (By.XPATH, '//ul[@class="select2-results__options"]/li[2]')
     nationality_selector = (By.XPATH, '//span[@id="select2-nationality-container"]')
@@ -93,7 +96,7 @@ class HeadLineLocators:
 class EventsLocators:
     post_event_button = (By.XPATH, '//a[@data-scenario="15"]')
 
-    #Data for filling event
+    # Data for filling event
     category_selector = (By.XPATH, '//select[@id="category"]')
     title_event = (By.XPATH, '//input[@name="title0"]')
     description_event = (By.XPATH, '//textarea[@name="description0"]')
@@ -101,7 +104,7 @@ class EventsLocators:
     country = (By.XPATH, '//span[@title="Vietnam"]')
     event_venue = (By.XPATH, '//textarea[@id="eventlocation"]')
     calendar_start = (By.XPATH, '//input[@id="event_start"]')
-    date_event_beginning = (By.XPATH, '//td[@class="day"][3]')
+    date_event_beginning = (By.XPATH, '//td[@class="day active"]')
     hour_event_beginning = (By.XPATH, '//div[contains(@style, "z-index: 100009")]//span[@class="hour"][5]')
     minute_event_beginning = (By.XPATH, '//div[contains(@style, "z-index: 100009")]//span[@class="minute"][5]')
     advanced_options = (By.XPATH, '//a[@class="show-advanced-options"]')
@@ -136,13 +139,13 @@ class EventsLocators:
 class PictureLocator:
     world_but = (By.XPATH, '//li[@class="showIt"][1]//span')
 
-    #Locators for country selection
+    # Locators for country selection
     country_selector = (By.XPATH, '//select[@id="select-destination"]')
     drop_country_box = (By.XPATH, '//span[@id="select2-select-destination-container"]')
     input_country_choice = (By.XPATH, '//span[@class="select2-search select2-search--dropdown"]/input')
     ok_button = (By.XPATH, '//button[@id="btn-search"]')
 
-    #Locators for check
+    # Locators for check
     alert_message = (By.XPATH, '//td[contains(text(), "Please select at least one criteria for your search")]')
     title_country = (By.XPATH, '//div[@id="section-annonce"]/h1')
     picture_of_chosen_place = (By.XPATH, '//div[@id="section-annonce"]')
@@ -151,7 +154,7 @@ class PictureLocator:
 
 
 class BlogLocators:
-    # Locaators for add blog
+    # Locators for add blog
     add_blog_button = (By.XPATH, '//a[@class=" btn fuddleAll"]')
     blog_title = (By.XPATH, '//input[@id="blogTitle"]')
     description_blog = (By.XPATH, '//textarea[@id="blogDescription"]')
@@ -160,7 +163,7 @@ class BlogLocators:
     blog_url_error = (By.XPATH, '//input[@id="blogAddress"]/../div//li')
     success_message = (By.XPATH, '//p[@class="section-description"]/strong')
 
-    #locators to select a country and make adjustments to select a country
+    # locators to select a country and make adjustments to select a country
     selector_country = (By.XPATH, '//select[@id="select-destination"]')
     list_blogs = (By.XPATH, '//div[@class="path"]/span[3]')
     drop_country_box = (By.XPATH, '//span[@id="select2-select-destination-container"]')
@@ -168,14 +171,14 @@ class BlogLocators:
     ok_button = (By.XPATH, '//button[@id="btn-search"]')
     alert_message = (By.XPATH, '//td[contains(text(), "Please select at least one criteria for your search")]')
 
-    #Locators choice of the whole world or the region for which to make the choice of the country
+    # Locators choice of the whole world or the region for which to make the choice of the country
     world_field = (By.XPATH, '//li[@class="showIt"][1]//span')
     region_field = (By.XPATH, '//li[@class="showIt"][2]//span')
 
     # Locator for anyblog
     any_blog = (By.XPATH, '//div[@class="blog-list"]/div[@class="view-row"][3]//div[@class="titre"]/a')
 
-    #Locators for comments
+    # Locators for comments
     comment_filed = (By.XPATH, '//div[@data-placeholder="Share your thoughts..."]')
     comment_submit_button = (By.XPATH, '//button[@class="editor__action"]')
     my_comment = (By.XPATH, '//div[@class="comment-thread__text"]/p')
@@ -229,7 +232,7 @@ class AdsLocators:
         'vehicles': (By.CSS_SELECTOR, 'div[class*=js-parent-select][data-parent-category="19"]')
     }
 
-    list_subcategory = (By.CSS_SELECTOR, 'div[class="browse-category__items js-category-items"]')  # data-parent-category="18"
+    list_subcategory = (By.CSS_SELECTOR, 'div[class="browse-category__items js-category-items"]')
 
     # locators for post classifieds
     post_add = (By.CSS_SELECTOR, 'a.btn.btn-cta')
