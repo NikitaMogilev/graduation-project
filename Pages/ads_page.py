@@ -24,7 +24,7 @@ class Ads(BasePage):
         for key in AdsLocators.categories:
             self.click_element(AdsLocators.categories[key])
             parent_category_expect = self.get_atr(AdsLocators.categories[key], 'data-parent-category')
-            allure.attach((key, parent_category_expect), name='Name of category and its data number')
+            allure.attach(f'{(key, parent_category_expect)}', name='Name of category and its data number')
             parent_category_actual = self.get_atr(AdsLocators.list_subcategory, 'data-parent-category')
             allure.attach(parent_category_actual, name='Data number of the list subcategory')
             assert parent_category_actual == parent_category_expect
@@ -52,7 +52,8 @@ class Ads(BasePage):
         with allure.step('Put title of your Ads'):
             self.send_keys(AdsLocators.title_ad, DataUser.title_ad)
         with allure.step('Switch to iframe of Description and make it'):
-            self.switch_to_iframe(AdsLocators.description_frame)
+            frame = self.find_element(AdsLocators.description_frame)
+            self.webdriver.switch_to.frame(frame)
             self.send_keys(AdsLocators.description, DataUser.ads_description)
         with allure.step('Switch to default context'):
             self.switch_to_default_context()

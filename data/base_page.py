@@ -8,6 +8,7 @@ from selenium.common.exceptions import NoSuchElementException
 from data.data import DataUser
 import allure
 
+
 class BasePage:
     def __init__(self, browser: webdriver.Chrome) -> object:
         self.webdriver: webdriver.Chrome = browser
@@ -29,7 +30,6 @@ class BasePage:
 
     def check_title(self):
         return self.webdriver.title
-
 
     def get_atr(self, locator: tuple, atr: str, timer=15):
         element = WebDriverWait(self.webdriver, timer).until(EC.presence_of_element_located(locator))
@@ -96,7 +96,6 @@ class BasePage:
             el_textes.append(text_el)
         return el_textes
 
-
     def switch_to_iframe(self, locator: object, timer=40):
         iframe = self.webdriver.find_element(locator)
         self.webdriver.switch_to.frame(iframe)
@@ -104,4 +103,3 @@ class BasePage:
 
     def switch_to_default_context(self):
         self.webdriver.switch_to.default_content()
-

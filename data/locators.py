@@ -104,7 +104,7 @@ class EventsLocators:
     country = (By.XPATH, '//span[@title="Vietnam"]')
     event_venue = (By.XPATH, '//textarea[@id="eventlocation"]')
     calendar_start = (By.XPATH, '//input[@id="event_start"]')
-    date_event_beginning = (By.XPATH, '//td[@class="day active"]')
+    date_event_beginning = (By.XPATH, '//td[@class="day active"]//following-sibling::td')
     hour_event_beginning = (By.XPATH, '//div[contains(@style, "z-index: 100009")]//span[@class="hour"][5]')
     minute_event_beginning = (By.XPATH, '//div[contains(@style, "z-index: 100009")]//span[@class="minute"][5]')
     advanced_options = (By.XPATH, '//a[@class="show-advanced-options"]')
@@ -115,8 +115,7 @@ class EventsLocators:
 
     # locators for edit and cancel event
     edit_button = (By.XPATH, '//div[@class="event-admin-bar"]//a[@class=" btn edit"]')
-    event_in_user_menu_button = (By.XPATH, '(//div[@id="upcoming-events"]'
-                                           '//div[@class="view-row clearfix"])[last()]//a/span[@itemprop="name"]')
+    event_in_user_menu_button = (By.XPATH, f'//span[contains(text(),"{DataUser.event_title}")]')
     title_event_upt = (By.XPATH, '//input[@name="title0"]')
     event_venue_upt = (By.XPATH, '//textarea[@id="eventlocation"]')
     cancel_button = (By.XPATH, '//div[@class="event-admin-bar"]//a[@class="btn cancel"]')
@@ -179,7 +178,7 @@ class BlogLocators:
     any_blog = (By.XPATH, '//div[@class="blog-list"]/div[@class="view-row"][3]//div[@class="titre"]/a')
 
     # Locators for comments
-    comment_filed = (By.XPATH, '//div[@data-placeholder="Share your thoughts..."]')
+    comment_filed = (By.XPATH, '//div[@data-placeholder="Share your thoughts..."]/p')
     comment_submit_button = (By.XPATH, '//button[@class="editor__action"]')
     my_comment = (By.XPATH, '//div[@class="comment-thread__text"]/p')
     options_list = (By.XPATH, '//img[@class="comment-thread__option-icon"]')

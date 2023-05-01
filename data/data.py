@@ -11,7 +11,7 @@ class DataUser:
     logined_user_country = 'Viet'
 
     # Block EVENT
-    event_title: str = f"Dance and Drinking{randint(0, 20)}"
+    event_title = f"Dance and Drinking151"
     upt_event_title = event_title + "UPT"
     event_description = 'We will dance,drink Rum, discus about cosmos'
     upt_event_description = 'We will dance,drink Rum, discus about cosmos UPDATE'

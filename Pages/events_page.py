@@ -22,9 +22,9 @@ class EventPage(BasePage):
         assert self.check_title() == 'Vietnam events: post your event'
 
     @allure.step('Fill data of event')
-    def fill_data_for_event(self, title: object = DataUser.event_title,
-                            description: object = DataUser.event_description,
-                            venue: object = DataUser.event_venue):
+    def fill_data_for_event(self, title=DataUser.event_title,
+                            description=DataUser.event_description,
+                            venue=DataUser.event_venue):
         with allure.step('Chose event category'):
             self.selector_by_index(EventsLocators.category_selector, '3')
         with allure.step('Chose event title'):
@@ -110,19 +110,19 @@ class EventPage(BasePage):
         with allure.step('Check if DECLINE button is exist click it if not exist click JOIN button'):
             if self.is_exist_check(EventsLocators.decline_button):
                 self.click_element(EventsLocators.decline_button)
-                time.sleep(3)
+                time.sleep(5)
                 join_count_before: str = self.get_text_from_element(EventsLocators.join_count)
                 self.click_element(EventsLocators.join_button)
-                time.sleep(3)
+                time.sleep(5)
             else:
                 join_count_before: str = self.get_text_from_element(EventsLocators.join_count)
                 self.click_element(EventsLocators.join_button)
-                time.sleep(3)
+                time.sleep(5)
         with allure.step('Check and Count JOIN button after click it and after decline'):
             join_count_after: str = self.get_text_from_element(EventsLocators.join_count)
             assert int(join_count_after) == int(join_count_before) + 1
             self.click_element(EventsLocators.decline_button)
-            time.sleep(3)
+            time.sleep(5)
             join_count_after: str = self.get_text_from_element(EventsLocators.join_count)
             assert int(join_count_after) == int(join_count_before)
 
@@ -131,21 +131,21 @@ class EventPage(BasePage):
         with allure.step('Check if DECLINE button is exist click it if not exist click JOIN button'):
             if self.is_exist_check(EventsLocators.decline_button):
                 self.click_element(EventsLocators.decline_button)
-                time.sleep(3)
+                time.sleep(5)
                 join_count_before: str = self.get_text_from_element(EventsLocators.join_count)
                 maybe_count_before: str = self.get_text_from_element(EventsLocators.maybe_count)
                 self.click_element(EventsLocators.join_button)
-                time.sleep(3)
+                time.sleep(5)
             else:
                 join_count_before: str = self.get_text_from_element(EventsLocators.join_count)
                 maybe_count_before: str = self.get_text_from_element(EventsLocators.maybe_count)
                 self.click_element(EventsLocators.join_button)
-                time.sleep(3)
+                time.sleep(5)
             with allure.step('Click maybe button then JOIN '):
                 self.click_element(EventsLocators.maybe_button)
-                time.sleep(3)
+                time.sleep(5)
                 self.click_element(EventsLocators.join_button)
-                time.sleep(3)
+                time.sleep(5)
                 join_count_after: str = self.get_text_from_element(EventsLocators.join_count)
                 maybe_count_after: str = self.get_text_from_element(EventsLocators.maybe_count)
             with allure.step('Check that counter of KOIN and MAYBE buttons is correct'):
